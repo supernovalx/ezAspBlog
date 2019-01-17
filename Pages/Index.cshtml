@@ -1,0 +1,43 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+@foreach (var post in Model.Posts)
+{
+    <div class="post">
+        <h1 class="post-title">
+            @post.Title
+        </h1>
+        <hr>
+        <h4 class="post-author">Author: 
+            <b>
+                @post.Author
+            </b>
+        </h4>
+        <p>
+            @post.Content
+        </p>
+        <hr>
+        <h4>Comments</h4>
+        <form method="post">
+            <input name="postId" value="@post.ID">
+            <textarea name="author" placeholder="Type your name here..."></textarea>
+            <textarea name="content" placeholder="Type your comment here..."></textarea>
+            <button asp-page-handler="Comment">Post comment</button>
+        </form>
+        @foreach (var comment in post.Comments)
+        {
+            <div class="comment">
+                <h5>
+                    @comment.Author said:
+                </h5>
+                <hr>
+                <p>
+                    @comment.Content
+                </p>
+            </div>
+        }
+    </div>
+}
