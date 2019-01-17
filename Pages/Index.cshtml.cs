@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 using temp.Models;
 
 namespace temp.Pages
@@ -18,25 +18,41 @@ namespace temp.Pages
             _context = context;
         }
 
-        public IList<Post> Posts { get;set; }
+        public IList<Post> Posts { get; set; }
 
 
         public void OnGet()
         {
-            Posts=_context.Posts.Include(p=>p.Comments).ToList();
+            Posts = _context.Posts.Include(p => p.Comments).ToList();
         }
 
-        public IActionResult OnPostComment(int postId, string author, string content)
+        public IActionResult OnPostNewComment(int postId, string author, string content)
         {
-            _context.Posts.FirstOrDefault(p=>p.ID==postId).Comments.Append(new Comment{
-                Author = author,
-                Content = content
-            });
-            _context.SaveChanges();
+            var post = _context.Posts.Include(p => p.Comments).FirstOrDefault(p => p.ID == postId);
+            if (post != null)
+            {
+                if (post.Comments == null)
+                {
+                    post.Comments = new List<Comment>();
+                }
+
+                post.Comments.Add(new Comment
+                {
+                    Author = author,
+                    Content = content
+                });
+                _context.SaveChanges();
+            }
 
             return RedirectToPage('/');
         }
 
+        public IActionResult OnPostDeleteComment(int commentId)
+        {
+            _context.Comments.Remove(_context.Comments.FirstOrDefault(c => c.ID == commentId));
+            _context.SaveChanges();
 
+            return RedirectToPage('/');
+        }
     }
 }

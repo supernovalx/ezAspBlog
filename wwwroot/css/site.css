@@ -62,6 +62,14 @@ button.accept-policy {
   margin-bottom: 1%;
 }
 
+.comment-input-content {
+    width: 100%;
+}
+
+.btn-delete-comment {
+    float:right;
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {

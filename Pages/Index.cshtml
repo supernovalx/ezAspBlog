@@ -22,16 +22,21 @@
         <hr>
         <h4>Comments</h4>
         <form method="post">
-            <input name="postId" value="@post.ID">
-            <textarea name="author" placeholder="Type your name here..."></textarea>
-            <textarea name="content" placeholder="Type your comment here..."></textarea>
-            <button asp-page-handler="Comment">Post comment</button>
+            <input name="postId" value="@post.ID" type="hidden">
+            <input class="comment-input-name" type="text" name="author" placeholder="Your name" required/>
+            <textarea class="comment-input-content" name="content" placeholder="Comment" required></textarea>
+            <button asp-page-handler="NewComment">Post comment</button>
         </form>
+        <hr />
         @foreach (var comment in post.Comments)
         {
             <div class="comment">
+                <form method="post">
+                    <input name="commentId" value="@comment.ID" type="hidden">
+                    <button asp-page-handler="DeleteComment" class="btn-delete-comment">Delete</button>
+                </form>
                 <h5>
-                    @comment.Author said:
+                    @comment.Author <i>said</i>:
                 </h5>
                 <hr>
                 <p>

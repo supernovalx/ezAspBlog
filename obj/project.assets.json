@@ -8677,7 +8677,7 @@
       ]
     },
     "System.Diagnostics.FileVersionInfo/4.3.0": {
-      "sha512": "6WVi7gArhxRiC+3qI5V2mFe1gHENj/F7xT5PQiy/lI/RsxXeivrt09WF0huwSQK2ubnmyyRFeA9z3w743/w32A==",
+      "sha512": "omCF64wzQ3Q2CeIqkD6lmmxeMZtGHUmzgFMPjfVaOsyqpR66p/JaZzManMw1s33osoAb5gqpncsjie67+yUPHQ==",
       "type": "package",
       "path": "system.diagnostics.fileversioninfo/4.3.0",
       "files": [
@@ -9647,12 +9647,11 @@
       ]
     },
     "System.Net.Http/4.3.0": {
-      "sha512": "Z1UfSF6dlpCdZdxh6LeoGlYH+q6ptG/iiIWgUUeKhE3DbQACmZkU7Sz2nOX0qdHjz72MOdYRbkSJ5Qwl6sZgvg==",
+      "sha512": "sYg+FtILtRQuYWSIAuNOELwVuVsxVyJGWQyOnlAzhV4xvhyFnON1bAzYYC+jjRW8JREM45R0R5Dgi8MTC5sEwA==",
       "type": "package",
       "path": "system.net.http/4.3.0",
       "files": [
         ".nupkg.metadata",
-        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/Xamarinmac20/_._",
@@ -9941,7 +9940,7 @@
       ]
     },
     "System.Private.DataContractSerialization/4.3.0": {
-      "sha512": "FQ8EpQJ/nkhlWEZSJVQmDLNONiMufYRuLVL/X7YnsVUIFJuhWO6i1Yc5+s7j7ZUlJtuTvWs96aHr5TU/kFM31w==",
+      "sha512": "yDaJ2x3mMmjdZEDB4IbezSnCsnjQ4BxinKhRAaP6kEgL6Bb6jANWphs5SzyD8imqeC/3FxgsuXT6ykkiH1uUmA==",
       "type": "package",
       "path": "system.private.datacontractserialization/4.3.0",
       "files": [
@@ -12258,7 +12257,7 @@
       ]
     },
     "System.Xml.XmlSerializer/4.3.0": {
-      "sha512": "VShQJhOxgD/5M2Z1IWm1vMaSqlbjo1zdFf8H7Ahte6bTvSUhUko/gDpAVVhGgGgTDeue4QyNg1fu1Zz2GKSEuQ==",
+      "sha512": "MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
       "type": "package",
       "path": "system.xml.xmlserializer/4.3.0",
       "files": [
@@ -12413,28 +12412,32 @@
     ]
   },
   "packageFolders": {
-    "/home/s/.nuget/packages/": {},
-    "/usr/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\hoang\\.nuget\\packages\\": {},
+    "c:\\program files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/s/Desktop/temp/temp.csproj",
+      "projectUniqueName": "D:\\Documents\\Desktop\\temp\\ezAspBlog\\temp.csproj",
       "projectName": "temp",
-      "projectPath": "/home/s/Desktop/temp/temp.csproj",
-      "packagesPath": "/home/s/.nuget/packages/",
-      "outputPath": "/home/s/Desktop/temp/obj/",
+      "projectPath": "D:\\Documents\\Desktop\\temp\\ezAspBlog\\temp.csproj",
+      "packagesPath": "C:\\Users\\hoang\\.nuget\\packages\\",
+      "outputPath": "D:\\Documents\\Desktop\\temp\\ezAspBlog\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+        "c:\\program files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/home/s/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\hoang\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 18.1.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "D:\\Program Files (x86)\\DevExpress 18.1\\Components\\System\\Components\\Packages": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
