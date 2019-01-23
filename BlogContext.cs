@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using temp.Models;
+using ezAspBlog.Models;
 
-namespace temp
+namespace ezAspBlog
 {
     public class BlogContext : DbContext
     {

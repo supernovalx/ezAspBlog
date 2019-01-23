@@ -5,52 +5,36 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using temp.Models;
+using ezAspBlog.Models;
+using ezAspBlog.Services;
 
-namespace temp.Pages
+namespace ezAspBlog.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly BlogContext _context;
+        private IPostData _postData;
 
-        public IndexModel(BlogContext context)
+        public IndexModel(IPostData postData)
         {
-            _context = context;
+            _postData = postData;
         }
 
-        public IList<Post> Posts { get; set; }
-
+        public List<Post> Posts { get; set; }
 
         public void OnGet()
         {
-            Posts = _context.Posts.Include(p => p.Comments).ToList();
+            Posts = _postData.GetAll().ToList();
         }
 
-        public IActionResult OnPostNewComment(int postId, string author, string content)
+        public IActionResult OnPostNewComment(int postId, Comment comment)
         {
-            var post = _context.Posts.Include(p => p.Comments).FirstOrDefault(p => p.ID == postId);
-            if (post != null)
-            {
-                if (post.Comments == null)
-                {
-                    post.Comments = new List<Comment>();
-                }
-
-                post.Comments.Add(new Comment
-                {
-                    Author = author,
-                    Content = content
-                });
-                _context.SaveChanges();
-            }
-
+            _postData.AddComment(postId, comment);
             return RedirectToPage('/');
         }
 
         public IActionResult OnPostDeleteComment(int commentId)
         {
-            _context.Comments.Remove(_context.Comments.FirstOrDefault(c => c.ID == commentId));
-            _context.SaveChanges();
+            _postData.DeleteComment(commentId);
 
             return RedirectToPage('/');
         }

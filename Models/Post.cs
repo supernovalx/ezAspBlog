@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace temp.Models
+namespace ezAspBlog.Models
 {
     public class Post
     {

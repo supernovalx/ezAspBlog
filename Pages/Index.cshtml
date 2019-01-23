@@ -3,46 +3,38 @@
 @{
     ViewData["Title"] = "Home page";
 }
+<div class="card-deck">
 
-@foreach (var post in Model.Posts)
-{
-    <div class="post">
-        <h1 class="post-title">
-            @post.Title
-        </h1>
-        <hr>
-        <h4 class="post-author">Author: 
-            <b>
-                @post.Author
-            </b>
-        </h4>
-        <p>
-            @post.Content
-        </p>
-        <hr>
-        <h4>Comments</h4>
-        <form method="post">
-            <input name="postId" value="@post.ID" type="hidden">
-            <input class="comment-input-name" type="text" name="author" placeholder="Your name" required/>
-            <textarea class="comment-input-content" name="content" placeholder="Comment" required></textarea>
-            <button asp-page-handler="NewComment">Post comment</button>
-        </form>
-        <hr />
-        @foreach (var comment in post.Comments)
-        {
-            <div class="comment">
-                <form method="post">
-                    <input name="commentId" value="@comment.ID" type="hidden">
-                    <button asp-page-handler="DeleteComment" class="btn-delete-comment">Delete</button>
-                </form>
-                <h5>
-                    @comment.Author <i>said</i>:
-                </h5>
-                <hr>
-                <p>
-                    @comment.Content
-                </p>
+    @foreach (var post in Model.Posts)
+    {
+        <div class="card" style="width: 25rem;">
+            <div class="card-body">
+                <h5 class="card-title">@post.Title</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Author <em>@post.Author</em> | <em>@post.Comments.Count</em> comments</h6>
+                <p class="card-text">@post.Content.Substring(0, 100)...</p>
+                <a asp-page="ShowPost" asp-route-id="@post.ID" class="card-link">Read more...</a>
+                <a href="#" class="card-link">Delete</a>
             </div>
-        }
-    </div>
-}
+        </div>
+        @*<div class="post">
+
+                <a asp-page="ShowPost" asp-route-id="@post.ID"><h1 class="post-title">@post.Title</h1></a>
+
+                <hr>
+                <h4 class="post-author">
+                    Author:
+                    <b>
+                        @post.Author
+                    </b>
+                </h4>
+                <p>
+                    @post.Content.Substring(0, 100)...
+                </p>
+                <hr>
+                <div>
+                    <b>@post.Comments.Count</b> comments
+                </div>
+            </div>*@
+    }
+
+</div>

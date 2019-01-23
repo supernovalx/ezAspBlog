@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using temp;
+using ezAspBlog;
 
-namespace temp.Migrations
+namespace ezAspBlog.Migrations
 {
     [DbContext(typeof(BlogContext))]
     [Migration("20190117124611_post.comment ienumerable to list")]

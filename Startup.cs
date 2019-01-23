@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore.Sqlite;
 using Microsoft.EntityFrameworkCore;
+using ezAspBlog.Services;
 
-namespace temp
+namespace ezAspBlog
 {
     public class Startup
     {
@@ -27,6 +29,7 @@ namespace temp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<BlogContext>(options => options.UseSqlite(Configuration.GetConnectionString("BlogContext")));
+            services.AddScoped<IPostData, SqlitePostData>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -36,6 +39,7 @@ namespace temp
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
             else
             {
@@ -44,6 +48,7 @@ namespace temp
                 app.UseHsts();
             }
 
+            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

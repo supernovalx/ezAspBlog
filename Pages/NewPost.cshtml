@@ -1,0 +1,15 @@
+﻿@page
+@model ezAspBlog.Pages.NewPostModel
+@{
+    ViewData["Title"] = "New Post";
+}
+
+<div class="post">
+    <form method="post">
+        <input asp-for="@Model.Post.Title" />
+        <input asp-for="@Model.Post.Author" />
+        <input asp-for="@Model.Post.Content" />
+        <input type="submit" asp-page-handler="NewPost" value="Post" />
+    </form>
+</div>
+

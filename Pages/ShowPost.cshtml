@@ -1,0 +1,47 @@
+﻿@page "{id}"
+@model ezAspBlog.Pages.ShowPostModel
+@{
+    ViewData["Title"] = @Model.Post.Title;
+}
+
+<div class="post">
+    <h1 class="post-title">
+        @Model.Post.Title
+    </h1>
+    <hr>
+    <h4 class="post-author">
+        Author:
+        <b>
+            @Model.Post.Author
+        </b>
+    </h4>
+    <p>
+        @Model.Post.Content
+    </p>
+    <hr>
+    <h4>Comments</h4>
+    <form method="post">
+        <input name="postId" value="@Model.Post.ID" type="hidden">
+        <input class="comment-input-name" type="text" name="author" placeholder="Your name" required />
+        <textarea class="comment-input-content" name="content" placeholder="Comment" required></textarea>
+        <button asp-page-handler="NewComment">Post comment</button>
+    </form>
+    <hr />
+    @foreach (var comment in Model.Post.Comments)
+    {
+        <div class="comment">
+            <form method="post">
+                <input name="commentId" value="@comment.ID" type="hidden">
+                <button asp-page-handler="DeleteComment" class="btn-delete-comment">Delete</button>
+            </form>
+            <h5>
+                @comment.Author <i>said</i>:
+            </h5>
+            <hr>
+            <p>
+                @comment.Content
+            </p>
+        </div>
+    }
+</div>
+

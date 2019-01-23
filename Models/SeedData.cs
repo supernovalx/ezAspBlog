@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace temp.Models
+namespace ezAspBlog.Models
 {
     public static class SeedData
     {

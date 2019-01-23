@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace temp.Migrations
+namespace ezAspBlog.Migrations
 {
     public partial class postcommentienumerabletolist : Migration
     {

@@ -1,4 +1,4 @@
-namespace temp.Models
+namespace ezAspBlog.Models
 {
     public class Comment
     {

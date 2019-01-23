@@ -9,9 +9,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using temp.Models;
+using ezAspBlog.Models;
 
-namespace temp
+namespace ezAspBlog
 {
     public class Program
     {
