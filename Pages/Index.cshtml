@@ -7,34 +7,18 @@
 
     @foreach (var post in Model.Posts)
     {
-        <div class="card" style="width: 25rem;">
-            <div class="card-body">
-                <h5 class="card-title">@post.Title</h5>
-                <h6 class="card-subtitle mb-2 text-muted">Author <em>@post.Author</em> | <em>@post.Comments.Count</em> comments</h6>
-                <p class="card-text">@post.Content.Substring(0, 100)...</p>
-                <a asp-page="ShowPost" asp-route-id="@post.ID" class="card-link">Read more...</a>
-                <a href="#" class="card-link">Delete</a>
-            </div>
+    <div class="card">
+        <div class="card-header">
+            @post.Author 's post
         </div>
-        @*<div class="post">
-
-                <a asp-page="ShowPost" asp-route-id="@post.ID"><h1 class="post-title">@post.Title</h1></a>
-
-                <hr>
-                <h4 class="post-author">
-                    Author:
-                    <b>
-                        @post.Author
-                    </b>
-                </h4>
-                <p>
-                    @post.Content.Substring(0, 100)...
-                </p>
-                <hr>
-                <div>
-                    <b>@post.Comments.Count</b> comments
-                </div>
-            </div>*@
+        <div class="card-body">
+            <h2 class="card-title">@post.Title</h2>
+            <h6 class="card-subtitle mb-2 text-muted">@post.Comments.Count comments</h6>
+            <p class="card-text">@post.Content.Substring(0, post.Content.Length > 100 ? 100 : post.Content.Length)...</p>
+            <a asp-page="ShowPost" asp-route-id="@post.ID" class="btn btn-primary">Read more</a>
+            <a asp-page-handler="DeletePost" asp-route-id="@post.ID" class="btn btn-light">Delete</a>
+        </div>
+    </div>
     }
 
 </div>

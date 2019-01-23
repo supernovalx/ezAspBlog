@@ -1,9 +1,9 @@
-﻿using System;
+﻿using ezAspBlog.Models;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using ezAspBlog.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace ezAspBlog.Services
 {
@@ -32,15 +32,21 @@ namespace ezAspBlog.Services
             return comment;
         }
 
+        public void AddPost(Post post)
+        {
+            _blogContext.Add(post);
+            _blogContext.SaveChanges();
+        }
+
         public void DeleteComment(int commentId)
         {
             _blogContext.Comments.Remove(_blogContext.Comments.FirstOrDefault(c => c.ID == commentId));
             _blogContext.SaveChanges();
         }
 
-        public Post Get(int Id)
+        public Post Get(int? Id)
         {
-            return _blogContext.Posts.Include(p => p.Comments).FirstOrDefault(x => x.ID == Id);
+            return Id == null ? null : _blogContext.Posts.Include(p => p.Comments).FirstOrDefault(x => x.ID == Id);
         }
 
         public IEnumerable<Post> GetAll()

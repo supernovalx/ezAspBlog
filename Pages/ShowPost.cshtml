@@ -1,4 +1,4 @@
-﻿@page "{id}"
+﻿@page "{id?}"
 @model ezAspBlog.Pages.ShowPostModel
 @{
     ViewData["Title"] = @Model.Post.Title;
@@ -22,8 +22,10 @@
     <h4>Comments</h4>
     <form method="post">
         <input name="postId" value="@Model.Post.ID" type="hidden">
-        <input class="comment-input-name" type="text" name="author" placeholder="Your name" required />
-        <textarea class="comment-input-content" name="content" placeholder="Comment" required></textarea>
+        <input asp-for="Comment.Author" placeholder="Your name" />
+        <span asp-validation-for="Comment.Author" class="text-danger"></span>
+        <textarea asp-for="Comment.Content" class="comment-input-content" placeholder="Comment"></textarea>
+        <span asp-validation-for="Comment.Content" class="text-danger"></span>
         <button asp-page-handler="NewComment">Post comment</button>
     </form>
     <hr />

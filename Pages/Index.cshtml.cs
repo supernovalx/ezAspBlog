@@ -26,17 +26,10 @@ namespace ezAspBlog.Pages
             Posts = _postData.GetAll().ToList();
         }
 
-        public IActionResult OnPostNewComment(int postId, Comment comment)
+        public IActionResult OnGetDeletePost(int Id)
         {
-            _postData.AddComment(postId, comment);
-            return RedirectToPage('/');
-        }
-
-        public IActionResult OnPostDeleteComment(int commentId)
-        {
-            _postData.DeleteComment(commentId);
-
-            return RedirectToPage('/');
+            _postData.Remove(Id);
+            return RedirectToPagePermanent("Index");
         }
     }
 }

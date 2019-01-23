@@ -4,12 +4,19 @@
     ViewData["Title"] = "New Post";
 }
 
-<div class="post">
-    <form method="post">
-        <input asp-for="@Model.Post.Title" />
-        <input asp-for="@Model.Post.Author" />
-        <input asp-for="@Model.Post.Content" />
-        <input type="submit" asp-page-handler="NewPost" value="Post" />
-    </form>
-</div>
+<form method="post">
+    <div class="form-group">
+        <label for="title">Post title</label>
+        <input asp-for="Post.Title" type="text" class="form-control" id="title" placeholder="Title">
+    </div>
+    <div class="form-group">
+        <label for="author">Author name</label>
+        <input asp-for="Post.Author" type="text" class="form-control" id="author" placeholder="Author name">
+    </div>
+    <div class="form-group">
+        <label for="content">Content</label>
+        <textarea asp-for="Post.Content" class="form-control" id="content" placeholder="Type in some stuffs..." rows="3"></textarea>
+    </div>
+    <button asp-page-handler="NewPost" type="submit" class="btn btn-primary">Submit</button>
+</form>
 
