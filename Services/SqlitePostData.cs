@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace ezAspBlog.Services
 {
-    public class SqlitePostData : IPostData
+    public class SqlPostData : IPostData
     {
         private BlogContext _blogContext;
 
-        public SqlitePostData(BlogContext blogContext)
+        public SqlPostData(BlogContext blogContext)
         {
             _blogContext = blogContext;
         }

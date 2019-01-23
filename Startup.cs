@@ -29,7 +29,7 @@ namespace ezAspBlog
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<BlogContext>(options => options.UseSqlServer(Configuration.GetConnectionString("BlogContext")));
-            services.AddScoped<IPostData, SqlitePostData>();
+            services.AddScoped<IPostData, SqlPostData>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
